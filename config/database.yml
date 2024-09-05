@@ -13,12 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: furima_41029_development
 
 # Warning: The database defined as "test" will be erased and
@@ -26,6 +27,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: furima_41029_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -50,6 +55,5 @@ test:
 #
 production:
   <<: *default
-  database: furima_41029_production
-  username: furima_41029
-  password: <%= ENV["FURIMA_41029_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
