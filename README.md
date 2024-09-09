@@ -27,7 +27,7 @@
 | name               | string     | null: false                    |
 | description        | text       | null: false                    |
 | price              | integer    | null: false                    |
-| category           | references | null: false, foreign_key: true |
+| category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_charge_id | integer    | null: false                    |
 | prefecture_id      | integer    | null: false                    |
@@ -37,8 +37,6 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :category
-- belongs_to :prefecture
 - has_one :purchase
 
 
@@ -56,7 +54,7 @@
 - has_one :shipping_address
 
 
-## ShippingAddresses テーブル
+## Shipping_Addresses テーブル
 
   | Column           | Type       | Options                        |
   | ---------------- | ---------- | ------------------------------ |
@@ -71,7 +69,6 @@
 ### Association
 
 - belongs_to :purchase
-- belongs_to :prefecture
 
 
 This README would normally document whatever steps are necessary to get the
