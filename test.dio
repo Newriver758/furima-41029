@@ -208,12 +208,6 @@
                         <mxPoint x="440" y="599.5" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="145" value="" style="endArrow=none;html=1;exitX=0.421;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="104" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="370" y="400" as="sourcePoint"/>
-                        <mxPoint x="420" y="350" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
                 <mxCell id="185" value="Purchases" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;" vertex="1" parent="1">
                     <mxGeometry x="100" y="520" width="180" height="120" as="geometry"/>
                 </mxCell>
