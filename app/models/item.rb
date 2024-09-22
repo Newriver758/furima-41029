@@ -15,5 +15,5 @@ class Item < ApplicationRecord
             presence: true
   validates :image, presence: true
   validates :prefecture_id, :shipping_charge_id, :shipping_day_id, :category_id, :condition_id,
-            numericality: { other_than: 0, message: 'を選択してください' }
+            numericality: { other_than: 0, message: "can't be blank" }
 end
