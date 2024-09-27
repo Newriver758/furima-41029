@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   belongs_to :user
+  validates :user, presence: true
 
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
@@ -16,5 +17,5 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true
   validates :prefecture_id, :shipping_charge_id, :shipping_day_id, :category_id, :condition_id,
-            numericality: { other_than: 0, message: "can't be blank" }
+            numericality: { other_than: 0, message: 'must be other than 0' }
 end

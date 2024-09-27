@@ -11,6 +11,10 @@ FactoryBot.define do
     shipping_day_id { rand(1..5) }
     price { rand(300..10_000) }
 
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
+    end
+
     trait :invalid do
       name { nil }
     end
