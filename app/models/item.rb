@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_day
 
   has_one :order
+
   has_one_attached :image
 
   validates :name, :description, :price, :category_id, :condition_id, :shipping_charge_id, :prefecture_id, :shipping_day_id,
