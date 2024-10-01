@@ -125,20 +125,17 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
-          <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to item_path(item) do %>
+            <%#= link_to item_path(item) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-            <% if item.order != nil %>
+            <%# if item.order != nil %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
             <% end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>
           <div class='item-info'>
@@ -156,10 +153,7 @@
           <% end %>
           </li>
         <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @items.blank? then %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -179,8 +173,7 @@
         <% end %>
       </li>
     <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+
     </ul>
   </div>
   <%# /商品一覧 %>
