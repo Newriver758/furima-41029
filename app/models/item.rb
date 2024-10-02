@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_charge
   belongs_to_active_hash :shipping_day
 
-  # has_one :order
+  has_one :order
 
   has_one_attached :image
 
