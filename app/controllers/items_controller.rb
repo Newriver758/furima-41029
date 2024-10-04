@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to @item, notice: '商品情報が更新されました。'
+      redirect_to item_path(item_params)
     else
       render :edit
     end
