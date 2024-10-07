@@ -32,7 +32,7 @@
         <%= link_to "削除", item_path(@item), data: {turbo_method: :delete}, class:"item-destroy" %>
       <%#else %>
         <%#if @item.order.blank? %>
-          <%=link_to "購入画面に進む", "#" ,class:"item-red-btn" %>
+          <%=link_to "購入画面に進む", "#", data: { turbo: false },class:"item-red-btn" %>
         <%#end %>
       <% end %>
     <% end %>
