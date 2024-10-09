@@ -17,11 +17,14 @@ class OrderForm
 
   # データを保存するメソッド
   def save
-    # 購入履歴を保存
-    order = Order.create(user_id:, item_id:)
-
-    # 住所情報を保存
-    Address.create(postal_code:, prefecture_id:, city:, address:, building:,
-                   phone_number:, order_id: order.id)
+    ActiveRecord::Bace.transaction do
+      # 購入履歴を保存
+      order = Order.create!(user_id:, item_id:)
+      # 住所情報を保存
+      Address.create!(postal_code:, prefecture_id:, city:, address:, building:,
+                      phone_number:, order_id: order.id)
+    end
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
