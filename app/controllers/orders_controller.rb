@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new(order_params)
     if @order_form.valid?
       @order_form.save
-      redirect_to root_path
+      return redirect_to root_path
     else
       render :index, status: :unprocessable_entity
     end
