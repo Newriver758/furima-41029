@@ -45,7 +45,8 @@
           <label class="form-text">カード情報</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id="number-form" class="input-default"></div>
+        <%= f.text_field :number, class: "input-default", id: "card-number", placeholder: "カード番号を入力(半角英数字)", maxlength: "16" %>
+
         <div class='available-card'>
           <%= image_tag 'card-visa.gif', class: 'card-logo'%>
           <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
@@ -58,8 +59,9 @@
           <label class="form-text">有効期限</label>
           <span class="indispensable">必須</span>
         </div>
+        
         <div class='input-expiration-date-wrap'>
-          <div id="expiry-form" class="input-default"></div>
+          <%= f.text_field :expiry_date, class: "input-expiration-date", id: "expiry-date", placeholder: "MM/YY", maxlength: "5" %>
         </div>
       </div>
       <div class="form-group">
@@ -67,7 +69,7 @@
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
-        <div id="cvc-form" class="input-default"></div>
+          <%= f.text_field :cvc, class: "input-default", id: "Card-cvc", placeholder: "カード背面4桁もしくは3桁の番号を入力", maxlength: "4" %>
       </div>
     </div>
     <%# /カード情報の入力 %>
