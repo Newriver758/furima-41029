@@ -9,7 +9,7 @@ RSpec.describe OrderForm, type: :model do
   describe '配送先情報の保存' do
     context '内容に問題がない場合' do
       it "priceとtokenがあれば保存ができること" do
-        expect(@order).to be_valid
+        expect(@order_form).to be_valid
       end
 
       it 'すべての値が正しく入力されていれば保存できること' do
