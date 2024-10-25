@@ -17,7 +17,7 @@ class OrderForm
 
   # データを保存するメソッド
   def save
-    ActiveRecord::Bace.transaction do
+    ActiveRecord::Base.transaction do
       # 購入履歴を保存
       order = Order.create!(user_id:, item_id:)
       # 住所情報を保存

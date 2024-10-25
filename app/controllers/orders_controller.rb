@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
     if @order_form.valid?
       pay_item
       @order_form.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :index, status: :unprocessable_entity
@@ -23,18 +23,18 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_form).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token).merge(
+    params.require(:order_form).permit(:price, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :token).merge(
       user_id: current_user.id, item_id: @item.id, token: params[:token]
     )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 自身のPAY.JPテスト秘密鍵を記述
-    Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
-      currency: 'jpy'                # 通貨の種類（日本円）
-    )
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵を記述
+      Payjp::Charge.create(
+        amount: @item.price,           # 商品の値段
+        card: order_params[:token],    # カードトークン
+        currency: 'jpy'                # 通貨の種類（日本円）
+      )
   end
 
   def set_item
@@ -44,4 +44,5 @@ class OrdersController < ApplicationController
   def redirect_if_ordered
     redirect_to root_path if @item.order.present?
   end
+end
 end
