@@ -27,18 +27,22 @@
 
     <%# ログイン中であれば表示 %>
     <% if user_signed_in? %>
-      <%# 出品者が未購入品であれば、編集・削除を表示 %>
+      <%# 出品者で、かつ未購入品であれば編集・削除を表示 %>
       <% if @item.user == current_user %>
         <% if @item.order.blank? %>
           <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
           <p class="or-text">or</p>
           <%= link_to "削除", item_path(@item), data: {turbo_method: :delete}, class:"item-destroy" %>
-      <%# 未購入品でない場合には、売り切れを表示 %>
-      <% elsif @item.order.present? %>
-        <%= link_to "売り切れました", item_path(@item), class:"disabled-button bold" %>
-      <%# 出品者以外かつ未購入品であれば、購入画面を表示 %>
+      <%# 出品者で購入済みの場合には「売り切れ」を表示 %>
+        <% else %>
+          <%= link_to "売り切れました", item_path(@item), class:"disabled-button bold" %>
+        <% end %>
       <% else %>
-        <%=link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false },class:"item-red-btn" %>
+      <%# 出品者でない場合、かつ未購入品であれば購入画面ボタンを表示 %>
+        <% if @item.order.blank? %>
+          <%=link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false },class:"item-red-btn" %>
+        <% else %>
+          <%= link_to "売り切れました", "#", class: "disabled-button bold" %>
         <% end %>
       <% end %>
     <% end %>
