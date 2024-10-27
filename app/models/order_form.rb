@@ -16,18 +16,16 @@ class OrderForm
   end
 
   # 郵便番号のフォーマットチェック
-  validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Include hyphen(-)' }, if: -> { postal_code.present? }
+  validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: 'is invalid. Include hyphen(-)' }, if: lambda {
+    postal_code.present?
+  }
 
   # データを保存するメソッド
   def save
-    ActiveRecord::Base.transaction do
-      # 購入履歴を保存
-      order = Order.create!(user_id:, item_id:)
-      # 住所情報を保存
-      Address.create!(postal_code:, prefecture_id:, city:, address:, building:,
-                      phone_number:, order_id: order.id)
-    end
-  rescue ActiveRecord::RecordInvalid
-    false
+    # 購入履歴を保存
+    order = Order.create!(user_id:, item_id:)
+    # 住所情報を保存
+    Address.create!(postal_code:, prefecture_id:, city:, address:, building:,
+                    phone_number:, order_id: order.id)
   end
 end
