@@ -85,3 +85,4 @@ gem 'active_storage_validations'
 gem 'pry-rails'
 gem 'payjp'
 gem 'gon'
+gem "aws-sdk-s3", require: false
