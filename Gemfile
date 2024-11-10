@@ -74,7 +74,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   group :production do
-    gem 'pg'
     gem 'unicorn', '6.1.0'
   end
 end
