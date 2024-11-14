@@ -54,7 +54,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'capistrano', '3.1'
+  gem 'capistrano', '~> 3.19.2'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
